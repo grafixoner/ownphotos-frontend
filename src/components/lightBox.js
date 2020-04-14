@@ -12,7 +12,6 @@ import {
   fetchPhotoDetail,
   setPhotosFavorite,
   setPhotosHidden,
-  deletePhotos,
   setPhotosPublic,
   generatePhotoIm2txtCaption
 } from "../actions/photosActions";
