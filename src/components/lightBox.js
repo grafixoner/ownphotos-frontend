@@ -119,6 +119,15 @@ export class LightBox extends Component {
         var mainSrc = "/hidden.png";
         var mainSrcThumbnail = "/hidden.png";
       }
+      if (
+        this.props.photoDetails[
+          this.props.idx2hash.slice(this.props.lightboxImageIndex)[0]
+        ].deleted &&
+        !this.props.showHidden
+      ) {
+        var mainSrc = "/hidden.png";
+        var mainSrcThumbnail = "/hidden.png";
+      }
     }
 
     return (
