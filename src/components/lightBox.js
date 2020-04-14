@@ -12,8 +12,8 @@ import {
   fetchPhotoDetail,
   setPhotosFavorite,
   setPhotosHidden,
-  setPhotosPublic,
   deletePhotos,
+  setPhotosPublic,
   generatePhotoIm2txtCaption
 } from "../actions/photosActions";
 import {
@@ -161,6 +161,19 @@ export class LightBox extends Component {
           }
           toolbarButtons={[
             <div>
+            {!this.props.photoDetails[
+                this.props.idx2hash[this.props.lightboxImageIndex]
+              ] && (
+                <Button
+                  loading
+                  color="black"
+                  icon
+                  circular
+                  disabled={this.props.isPublic}
+                >
+                  <Icon name="trash" color={"grey"} />
+                </Button>
+              )}
               {!this.props.photoDetails[
                 this.props.idx2hash[this.props.lightboxImageIndex]
               ] && (
@@ -200,6 +213,36 @@ export class LightBox extends Component {
                   <Icon name="globe" color={"grey"} />
                 </Button>
               )}
+              {this.props.photoDetails[
+                this.props.idx2hash[this.props.lightboxImageIndex]
+              ] && (
+                <Button
+                  disabled={this.props.isPublic}
+                  onClick={() => {
+                    const image_hash = this.props.idx2hash[
+                      this.props.lightboxImageIndex
+                    ];
+                    const val = !this.props.photoDetails[image_hash].deleted;
+                    this.props.dispatch(deletePhotos([image_hash], val));
+                  }}
+                  color="black"
+                  icon
+                  circular
+                >
+                  <Icon
+                    name="trash"
+                    color={
+                      this.props.photoDetails[
+                        this.props.idx2hash[this.props.lightboxImageIndex]
+                      ].deleted
+                        ? "red"
+                        : "grey"
+                    }
+                  />
+                </Button>
+              )}
+
+
               {this.props.photoDetails[
                 this.props.idx2hash[this.props.lightboxImageIndex]
               ] && (
