@@ -273,7 +273,46 @@ export function setPhotosHidden(image_hashes, hidden) {
       });
   };
 }
-
+export function deletePhotos(image_hashes) {
+  return function(dispatch) {
+    dispatch({ type: "SET_PHOTOS_DELETED" });
+    Server.post(`photosedit/delete/`, {
+      image_hashes: image_hashes,
+      deleted: deleted
+    })
+      .then(response => {
+        dispatch({
+          type: "SET_PHOTOS_DELETED_FULFILLED",
+          payload: {
+            image_hashes: image_hashes,
+            deleted: deleted,
+            updatedPhotos: response.data.updated
+          }
+        });
+        if (deleted) {
+          var notificationMessage = "were successfully deleted";
+        } else {
+          var notificationMessage = "were successfully undeleted";
+        }
+        dispatch(
+          notify({
+            message: `${response.data.updated.length} photo(s) ` + notificationMessage,
+            title: "Delete photos",
+            status: "success",
+            dismissible: true,
+            dismissAfter: 3000,
+            position: "br"
+          })
+        );
+        if (image_hashes.length === 1) {
+          dispatch(fetchPhotoDetail(image_hashes[0]));
+        }
+      })
+      .catch(err => {
+        dispatch({ type: "SET_PHOTOS_DELETED_REJECTED", payload: err });
+      });
+  };
+}
 export function scanPhotos() {
   return function(dispatch) {
     dispatch({ type: "SCAN_PHOTOS" });

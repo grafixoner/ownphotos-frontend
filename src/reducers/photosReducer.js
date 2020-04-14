@@ -308,7 +308,42 @@ export default function reducer(
         favoritePhotos: newFavoritePhotos
       };
     }
+case "SET_PHOTOS_DELETED_FULFILLED": {
+      var valDeleted = action.payload.deleted;
+      var imageHashes = action.payload.image_hashes;
+      var updatedPhotos = action.payload.updatedPhotos;
+      var newPhotos = { ...state.photoDetails };
 
+      var updatedPhotosImageHashes = updatedPhotos.map(
+        photo => photo.image_hash
+      );
+
+      updatedPhotos.forEach(photo => {
+        newPhotos[[photo.image_hash]] = photo;
+      });
+
+      var newDeletedPhotos = [...state.deletedPhotos];
+
+      if (valFavorite) {
+        updatedPhotos.forEach(photo => {
+          newDeletedPhotos.push(photo);
+        });
+      } else {
+        newDeletedPhotos = newDeletedPhotos.filter(photo => {
+          if (updatedPhotosImageHashes.includes(photo.image_hash)) {
+            return false;
+          } else {
+            return true;
+          }
+        });
+      }
+
+      return {
+        ...state,
+        photoDetails: newPhotos,
+        deletedPhotos: deletedPhotos
+      };
+    }
     case "SET_PHOTOS_HIDDEN_FULFILLED": {
       var valHidden = action.payload.hidden;
       var imageHashes = action.payload.image_hashes;

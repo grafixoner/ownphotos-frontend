@@ -12,6 +12,7 @@ import {
   fetchPhotoDetail,
   setPhotosFavorite,
   setPhotosHidden,
+  deletePhotos,
   setPhotosPublic,
   generatePhotoIm2txtCaption
 } from "../actions/photosActions";
@@ -199,6 +200,36 @@ export class LightBox extends Component {
                   <Icon name="globe" color={"grey"} />
                 </Button>
               )}
+{this.props.photoDetails[
+                this.props.idx2hash[this.props.lightboxImageIndex]
+              ] && (
+                <Button
+                  disabled={this.props.isPublic}
+                  onClick={() => {
+                    const image_hash = this.props.idx2hash[
+                      this.props.lightboxImageIndex
+                    ];
+                    const val = !this.props.photoDetails[image_hash].deleted;
+                    this.props.dispatch(deletePhotos([image_hash], val));
+                  }}
+                  color="black"
+                  icon
+                  circular
+                >
+                  <Icon
+                    name="hide"
+                    color={
+                      this.props.photoDetails[
+                        this.props.idx2hash[this.props.lightboxImageIndex]
+                      ].deleted
+                        ? "red"
+                        : "grey"
+                    }
+                  />
+                </Button>
+              )}
+
+
               {this.props.photoDetails[
                 this.props.idx2hash[this.props.lightboxImageIndex]
               ] && (

@@ -15,7 +15,9 @@ import {
     fetchPhotos, 
     fetchPhotoDetail, 
     setPhotosFavorite,
-    setPhotosHidden} from '../actions/photosActions'
+    setPhotosHidden,
+    deletePhotos} from '../actions/photosActions'
+
 
 import { 
     Card, 

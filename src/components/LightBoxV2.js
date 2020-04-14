@@ -4,7 +4,7 @@ import { List, WindowScroller,AutoSizer } from 'react-virtualized';
 import 'react-virtualized/styles.css'; // only needs to be imported once
 import { connect } from "react-redux";
 import {  fetchDateAlbumsPhotoHashList,fetchAlbumsDateGalleries} from '../actions/albumsActions'
-import {  fetchPhotoDetail, setPhotosFavorite, setPhotosHidden} from '../actions/photosActions'
+import {  fetchPhotoDetail, setPhotosFavorite, setPhotosHidden, deletePhotos} from '../actions/photosActions'
 import { Card, Image, Header, Divider, Item, Loader, Dimmer, Sticky, Portal, Grid, List as ListSUI,
          Container, Label, Popup, Segment, Button, Icon, Table, Transition, Breadcrumb} from 'semantic-ui-react';
 import {Server, serverAddress} from '../api_client/apiClient'
