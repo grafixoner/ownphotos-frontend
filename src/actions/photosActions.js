@@ -273,7 +273,7 @@ export function setPhotosHidden(image_hashes, hidden) {
       });
   };
 }
-export function deletePhotos(image_hashes) {
+export function deletePhotos(image_hashes, deleted) {
   return function(dispatch) {
     dispatch({ type: "SET_PHOTOS_DELETED" });
     Server.post(`photosedit/delete/`, {
