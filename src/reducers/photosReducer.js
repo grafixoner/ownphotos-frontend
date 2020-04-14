@@ -341,7 +341,7 @@ case "SET_PHOTOS_DELETED_FULFILLED": {
       return {
         ...state,
         photoDetails: newPhotos,
-        deletedPhotos: deletedPhotos
+        deletedPhotos: newDeletedPhotos
       };
     }
     case "SET_PHOTOS_HIDDEN_FULFILLED": {
