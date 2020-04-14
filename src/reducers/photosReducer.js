@@ -184,6 +184,20 @@ export default function reducer(
         favoritePhotos: action.payload
       };
     }
+    case "FETCH_DELETED_PHOTOS": {
+      return { ...state, fetchingHiddenPhotos: true };
+    }
+    case "FETCH_DELETED_PHOTOS_REJECTED": {
+      return { ...state, fetchingDeletedPhotos: false, error: action.payload };
+    }
+    case "FETCH_DELETED_PHOTOS_FULFILLED": {
+      return {
+        ...state,
+        fetchingDeletedPhotos: false,
+        fetchedDeletedPhotos: true,
+        deletedPhotos: action.payload
+      };
+    }
 
     case "FETCH_HIDDEN_PHOTOS": {
       return { ...state, fetchingHiddenPhotos: true };
