@@ -269,7 +269,7 @@ export class PhotoListView extends Component {
     if (this.state.cellContents[rowIndex][columnIndex]) {
       // non-empty cell
       const cell = this.state.cellContents[rowIndex][columnIndex];
-      if (cell.date) {
+      if (cell.date && this.state.cellContents[rowIndex][0]["photos"].length > 0) {
         // header cell has 'date' attribute
         if (this.state.selectMode) {
           return (
