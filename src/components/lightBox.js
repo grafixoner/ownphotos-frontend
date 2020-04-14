@@ -161,6 +161,19 @@ export class LightBox extends Component {
           }
           toolbarButtons={[
             <div>
+            {!this.props.photoDetails[
+                this.props.idx2hash[this.props.lightboxImageIndex]
+              ] && (
+                <Button
+                  loading
+                  color="black"
+                  icon
+                  circular
+                  disabled={this.props.isPublic}
+                >
+                  <Icon name="trash" color={"grey"} />
+                </Button>
+              )}
               {!this.props.photoDetails[
                 this.props.idx2hash[this.props.lightboxImageIndex]
               ] && (
@@ -200,7 +213,7 @@ export class LightBox extends Component {
                   <Icon name="globe" color={"grey"} />
                 </Button>
               )}
-{this.props.photoDetails[
+              {this.props.photoDetails[
                 this.props.idx2hash[this.props.lightboxImageIndex]
               ] && (
                 <Button
@@ -217,7 +230,7 @@ export class LightBox extends Component {
                   circular
                 >
                   <Icon
-                    name="hide"
+                    name="trash"
                     color={
                       this.props.photoDetails[
                         this.props.idx2hash[this.props.lightboxImageIndex]
