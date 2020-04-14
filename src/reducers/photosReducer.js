@@ -20,6 +20,10 @@ export default function reducer(
     fetchingHiddenPhotos: false,
     fetchedHiddenPhotos: false,
 
+    deletedPhotos: [],
+    fetchingDeletedPhotos: false,
+    fetchedDeletedPhotos: false,
+
     noTimestampPhotos: [],
     fetchingNoTimestampPhotos: false,
     fetchedNoTimestampPhotos: false,
