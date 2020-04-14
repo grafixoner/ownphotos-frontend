@@ -266,7 +266,6 @@ export class PhotoListView extends Component {
   }
 
   cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
-    if (this.state.cellContents[rowIndex][0]["photos"].length !== 0){
     if (this.state.cellContents[rowIndex][columnIndex]) {
       // non-empty cell
       const cell = this.state.cellContents[rowIndex][columnIndex];
@@ -675,10 +674,6 @@ export class PhotoListView extends Component {
     } else {
       // empty cell
       return <div key={key} style={style} />;
-    }
-    } else {
-      // empty cell
-      return <div key={key} style={style} data-test="asdf"/>;
     }
   };
 
