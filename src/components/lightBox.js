@@ -184,28 +184,9 @@ export class LightBox extends Component {
                   circular
                   disabled={this.props.isPublic}
                 >
-                  <Icon name="hide" color={"grey"} />
-                </Button>
-              )}
-
-
-
-              {!this.props.photoDetails[
-                this.props.idx2hash[this.props.lightboxImageIndex]
-              ] && (
-                <Button
-                  loading
-                  color="black"
-                  icon
-                  circular
-                  disabled={this.props.isPublic}
-                >
                   <Icon name="star" color={"grey"} />
                 </Button>
               )}
-
-
-
               {!this.props.photoDetails[
                 this.props.idx2hash[this.props.lightboxImageIndex]
               ] && (
@@ -219,9 +200,6 @@ export class LightBox extends Component {
                   <Icon name="globe" color={"grey"} />
                 </Button>
               )}
-
-
-
               {this.props.photoDetails[
                 this.props.idx2hash[this.props.lightboxImageIndex]
               ] && (
@@ -250,9 +228,6 @@ export class LightBox extends Component {
                   />
                 </Button>
               )}
-
-
-
               {this.props.photoDetails[
                 this.props.idx2hash[this.props.lightboxImageIndex]
               ] && (
@@ -281,9 +256,6 @@ export class LightBox extends Component {
                   />
                 </Button>
               )}
-
-
-
               {this.props.photoDetails[
                 this.props.idx2hash[this.props.lightboxImageIndex]
               ] && (
@@ -315,9 +287,6 @@ export class LightBox extends Component {
                   />
                 </Button>
               )}
-
-
-
               <Button
                 icon
                 active={this.state.lightboxSidebarShow}
@@ -330,9 +299,6 @@ export class LightBox extends Component {
               >
                 <Icon name="info" />
               </Button>
-
-
-
             </div>
           ]}
           onCloseRequest={this.props.onCloseRequest}
