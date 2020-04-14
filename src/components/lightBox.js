@@ -171,10 +171,9 @@ export class LightBox extends Component {
                   circular
                   disabled={this.props.isPublic}
                 >
-                  <Icon name="trash" color={"grey"} />
+                  <Icon name="hide" color={"grey"} />
                 </Button>
               )}
-
               {!this.props.photoDetails[
                 this.props.idx2hash[this.props.lightboxImageIndex]
               ] && (
@@ -221,34 +220,6 @@ export class LightBox extends Component {
                 </Button>
               )}
 
-              {this.props.photoDetails[
-                this.props.idx2hash[this.props.lightboxImageIndex]
-              ] && (
-                <Button
-                  disabled={this.props.isPublic}
-                  onClick={() => {
-                    const image_hash = this.props.idx2hash[
-                      this.props.lightboxImageIndex
-                    ];
-                    const val = !this.props.photoDetails[image_hash].deleted;
-                    this.props.dispatch(deletePhotos([image_hash], val));
-                  }}
-                  color="black"
-                  icon
-                  circular
-                >
-                  <Icon
-                    name="trash"
-                    color={
-                      this.props.photoDetails[
-                        this.props.idx2hash[this.props.lightboxImageIndex]
-                      ].deleted
-                        ? "red"
-                        : "grey"
-                    }
-                  />
-                </Button>
-              )}
 
 
               {this.props.photoDetails[
