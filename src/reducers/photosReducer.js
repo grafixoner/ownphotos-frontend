@@ -328,7 +328,7 @@ case "SET_PHOTOS_DELETED_FULFILLED": {
 
       var newDeletedPhotos = [...state.deletedPhotos];
 
-      if (valFavorite) {
+      if (valDeleted) {
         updatedPhotos.forEach(photo => {
           newDeletedPhotos.push(photo);
         });
@@ -364,7 +364,7 @@ case "SET_PHOTOS_DELETED_FULFILLED": {
 
       var newHiddenPhotos = [...state.hiddenPhotos];
 
-      if (valFavorite) {
+      if (valHidden) {
         updatedPhotos.forEach(photo => {
           newHiddenPhotos.push(photo);
         });
